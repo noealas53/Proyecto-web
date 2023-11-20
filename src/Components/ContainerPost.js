@@ -9,19 +9,22 @@ const ContainerPost = ({ username }) => {
 
     useEffect(() => {
         async function getPost() {
-            
-            const { data: response } = await axios.get("http://localhost:5000/api/publications/" , {
-            headers: {
+          try {
+            const { data: response } = await axios.get("http://localhost:5000/api/publications/", {
+              headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
-                },
+              },
             });
-
-            setPost({ status: 'done', data: response.data })
+      
+            setPost({ status: 'done', data: response.data });
+          } catch (error) {
+            console.error("Error al obtener publicaciones:", error);
+            setPost({ status: 'error', data: null });
+          }
         }
-
+      
         getPost();
-
-    }, []);
+      }, []);
 
     if(post.status === 'cargando') return <Cargando />
 

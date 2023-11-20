@@ -7,7 +7,6 @@ const AddComment = ({ post, afterSubmit }) => {
 
     function onChange(e) {
         setInputVal(e.target.value);
-
     }
 
     async function onSubmit(e) {

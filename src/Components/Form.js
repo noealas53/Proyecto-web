@@ -6,9 +6,12 @@ import 'react-toastify/dist/ReactToastify.css';
 const Form = () => {
 
     function resetChan () {
-        document.getElementById('title').value = '';
+        document.getElementById('url').value = '';
+        document.getElementById('name').value = '';
+        document.getElementById('price').value = '';
         document.getElementById('description').value = '';
-        document.getElementById('image').value = '';
+        document.getElementById('category').value = '';
+        document.getElementById('state').value = '';
     }
 
     async function onSubmit (event) {
@@ -18,9 +21,9 @@ const Form = () => {
 
         const body = Object.fromEntries(dataForm.entries());
 
-        if (body.title === '' || body.description === '' ) return toast('Campos vacios', { type: 'warning'});
+        if (body.url === '' || body.name === '' || body.price === '' || body.description === '' || body.category === '' || body.state === '' ) return toast('Campos vacios', { type: 'warning'});
 
-        const response = await axios.post('http://localhost:5000/api/users/create', { ...body, active: body.active === 'on' },{
+        const response = await axios.post('http://localhost:5000/api/publications/create', { ...body, active: body.active === 'on' },{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`, 
             },
@@ -34,20 +37,28 @@ const Form = () => {
         <form className="border mt-3 mb-3 px-7 py-3 rounded-md justify-center space-y-5 items-center" id="form" onSubmit={onSubmit}>
             <ToastContainer />
             <div className="flex flex-col space-y-2">
-                <label htmlFor="title" >Titulo: </label>
-                <input className=" border border-black rounded-md px-2" type="text" minLength="8" maxLength="32" name="title" id="title" placeholder="Titulo" />
+                <label htmlFor="url" >URL: </label>
+                <input className=" border border-black rounded-md px-2" type="text" minLength="8" maxLength="32" name="url" id="url" placeholder="url" />
+            </div>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="name" >Nombre: </label>
+                <input className="border border-black rounded-md px-2" type="text" minLength="5" maxLength="32" name="name" id="name" placeholder="name" />
+            </div>
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="price" >Precio: </label>
+                <input className=" border border-black rounded-md px-2" type="text" minLength="8" maxLength="32" name="price" id="price" placeholder="price" />
             </div>
             <div className="flex flex-col space-y-2">
                 <label htmlFor="description" >Descripcion: </label>
-                <input className="border border-black rounded-md px-2" type="text" minLength="5" maxLength="32" name="description" id="description" placeholder="Descripcion" />
+                <input className=" border border-black rounded-md px-2" type="text" minLength="8" maxLength="32" name="description" id="description" placeholder="description" />
             </div>
             <div className="flex flex-col space-y-2">
-                <label htmlFor="image" >Imagen: </label>
-                <input className="border border-black rounded-md px-2" type="text" name="image" id="image" placeholder="Imagen" />
+                <label htmlFor="category" >Categoria: </label>
+                <input className="border border-black rounded-md px-2" type="text" name="category" id="category" placeholder="category" />
             </div>
-            <div>
-                <label htmlFor="active" >Activo: </label>
-                <input className="rounded-md ml-16 form-checkbox h-7 w-7 text-green-500" type="checkbox" name="active" id="active" />
+            <div className="flex flex-col space-y-2">
+                <label htmlFor="state" >Estado: </label>
+                <input className=" border border-black rounded-md px-2" type="text" minLength="8" maxLength="32" name="state" id="state" placeholder="state" />
             </div>
             <button className="bg-gray-400 p-2 rounded-md text-white text-center w-full" type="submit" > Comentar </button>
         </form>
