@@ -29,7 +29,6 @@ const Login = () => {
             const res = await axios.post('http://localhost:5000/api/auth/login', { email: userVal, password: passVal } );
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token)
-                localStorage.setItem('rol', res.data.role)
                 changep('/');
             }
 

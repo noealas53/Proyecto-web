@@ -11,7 +11,6 @@ const Main = () => {
     const [whoami, setWhoami] = useState();
 
     const user = localStorage.getItem('token');
-    const rol = localStorage.getItem('rol');
 
     useEffect(() => {
 
@@ -38,8 +37,7 @@ const Main = () => {
         
         <div className="w-full">
             {
-                rol === 'admin'
-                && <div className="mt-5 flex flex-wrap justify-center items-center">
+            <div className="mt-5 flex flex-wrap justify-center items-center">
                 <Form />
             </div>
             }
