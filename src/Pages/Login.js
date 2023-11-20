@@ -12,6 +12,11 @@ const Login = () => {
     const user = useRef(null);
     const pass = useRef(null);
 
+    if (user == null) {
+        changep('/login');
+        return;
+    }
+
     async function onSubmit(event) {
         
         event.preventDefault();
@@ -26,7 +31,7 @@ const Login = () => {
 
         try {
 
-            const res = await axios.post('http://localhost/api/auth/login', { email: userVal, password: passVal } );
+            const res = await axios.post('/api/auth/login', { email: userVal, password: passVal } );
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token)
                 changep('/');
