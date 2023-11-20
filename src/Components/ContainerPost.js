@@ -7,8 +7,8 @@ const ContainerPost = ({ username }) => {
 
     const [post, setPost ] = useState({ status: 'cargando', data: null });
 
-    /*useEffect(() => {
-        async function getPost() {
+    useEffect(() => {
+        /*async function getPost() {
           try {
             const { data: response } = await axios.get("/api/publications/", {
               headers: {
@@ -23,8 +23,8 @@ const ContainerPost = ({ username }) => {
           }
         }
       
-        getPost();
-      }, []);*/
+        getPost();*/
+      }, []);
 
     if(post.status === 'cargando') return <Cargando />
 
