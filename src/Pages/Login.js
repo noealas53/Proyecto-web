@@ -26,7 +26,7 @@ const Login = () => {
 
         try {
 
-            const res = await axios.post('http://localhost:5000/api/auth/login', { email: userVal, password: passVal } );
+            const res = await axios.post('http://localhost/api/auth/login', { email: userVal, password: passVal } );
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token)
                 changep('/');

@@ -23,7 +23,7 @@ const Form = () => {
 
         if (body.url === '' || body.name === '' || body.price === '' || body.description === '' || body.category === '' || body.state === '' ) return toast('Campos vacios', { type: 'warning'});
 
-        const response = await axios.post('http://localhost:5000/api/publications/create', { ...body, active: body.active === 'on' },{
+        const response = await axios.post('http://localhost/api/publications/create', { ...body, active: body.active === 'on' },{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`, 
             },

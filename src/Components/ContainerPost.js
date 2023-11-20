@@ -10,7 +10,7 @@ const ContainerPost = ({ username }) => {
     useEffect(() => {
         async function getPost() {
           try {
-            const { data: response } = await axios.get("http://localhost:5000/api/publications/", {
+            const { data: response } = await axios.get("http://localhost/api/publications/", {
               headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
               },
