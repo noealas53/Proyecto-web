@@ -12,8 +12,6 @@ const Login = () => {
     const user = useRef(null);
     const pass = useRef(null);
 
-    changep('/');
-
     async function onSubmit(event) {
         
         event.preventDefault();
