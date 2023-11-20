@@ -47,7 +47,7 @@ const Login = () => {
             msj = 'Error de servidor';
             console.error(response.data); // Imprime detalles del error del servidor en la consola
             } else if (response && response.status === 404) {
-            msj = 'Usuario no existe';
+            msj = 'Usuario o contrasena invalido';
             } else {
             msj = 'Error desconocido';
             console.error(e); // Imprime detalles del error desconocido en la consola
