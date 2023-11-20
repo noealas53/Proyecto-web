@@ -20,7 +20,7 @@ const Form = () => {
 
         if (body.title === '' || body.description === '' ) return toast('Campos vacios', { type: 'warning'});
 
-        const response = await axios.post('https://posts-pw2021.herokuapp.com/api/v1/post/create', { ...body, active: body.active === 'on' },{
+        const response = await axios.post('http://localhost:5000/api/users/create', { ...body, active: body.active === 'on' },{
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`, 
             },

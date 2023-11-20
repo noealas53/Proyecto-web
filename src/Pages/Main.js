@@ -16,7 +16,7 @@ const Main = () => {
     useEffect(() => {
 
         async function getIden() {
-            const { data } = await axios.get('https://posts-pw2021.herokuapp.com/api/v1/auth/whoami', {
+            const { data } = await axios.get('http://localhost:5000/api/publications/', {
                 headers: {
                     Authorization: `Bearer ${user}`,
                 },

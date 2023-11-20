@@ -10,7 +10,7 @@ const ContainerPost = ({ username }) => {
     useEffect(() => {
         async function getPost() {
             
-            const { data: response } = await axios.get("https://posts-pw2021.herokuapp.com/api/v1/post/all?limit=10&page=0" , {
+            const { data: response } = await axios.get("http://localhost:5000/api/publications/" , {
             headers: {
                 Authorization: `Bearer ${localStorage.getItem('token')}`,
                 },

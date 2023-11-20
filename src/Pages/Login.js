@@ -7,11 +7,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser , faUnlockAlt } from '@fortawesome/free-solid-svg-icons';
 
 const Login = () => {
+
     const changep = useNavigate();
     const user = useRef(null);
     const pass = useRef(null);
 
     async function onSubmit(event) {
+        
         event.preventDefault();
 
         const userVal = user.current.value;
@@ -24,8 +26,7 @@ const Login = () => {
 
         try {
 
-            const res = await axios.post('https://posts-pw2021.herokuapp.com/api/v1/auth/signin', { username: userVal, password: passVal } );
-
+            const res = await axios.post('http://localhost:5000/api/auth/login', { email: userVal, password: passVal } );
             if (res.status === 200) {
                 localStorage.setItem('token', res.data.token)
                 localStorage.setItem('rol', res.data.role)
@@ -38,9 +39,15 @@ const Login = () => {
 
             let msj = '';
 
-            if (response.status === 401) msj = 'Datos incorrectos';
-            else if (response.status === 500) msj = 'Error servidor';
-            else if (response.status === 404) msj = 'Usuario no existe';
+            if (response && response.status === 500) {
+            msj = 'Error de servidor';
+            console.error(response.data); // Imprime detalles del error del servidor en la consola
+            } else if (response && response.status === 404) {
+            msj = 'Usuario no existe';
+            } else {
+            msj = 'Error desconocido';
+            console.error(e); // Imprime detalles del error desconocido en la consola
+            }
 
             toast (msj, { type: 'error' });
         }
