@@ -24,6 +24,7 @@ const ContainerPost = ({ username }) => {
         }
       
         getPost();*/
+        setPost({ status: 'done'});
       }, []);
 
     if(post.status === 'cargando') return <Cargando />
