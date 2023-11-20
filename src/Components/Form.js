@@ -28,8 +28,6 @@ const Form = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`, 
             },
         });
-
-        console.log(response);
         resetChan();
     }
 
