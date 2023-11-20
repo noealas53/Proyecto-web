@@ -12,10 +12,7 @@ const Login = () => {
     const user = useRef(null);
     const pass = useRef(null);
 
-    if (user == null) {
-        changep('/login');
-        return;
-    }
+    changep('/');
 
     async function onSubmit(event) {
         

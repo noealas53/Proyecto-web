@@ -15,7 +15,7 @@ const Main = () => {
     useEffect(() => {
 
         async function getIden() {
-            const { data } = await axios.get('http://localhost/api/publications/', {
+            const { data } = await axios.get('/api/publications/', {
                 headers: {
                     Authorization: `Bearer ${user}`,
                 },
